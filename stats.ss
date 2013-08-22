@@ -1,4 +1,5 @@
 #lang scheme
+(provide (all-defined-out))
 
 (define (mean lst)
   (if (empty? lst) null (/ (apply + lst) (length lst))))
@@ -21,3 +22,7 @@
              lst1 
              lst2)
       (- (length lst1) 1)))
+
+(define (correlation-coefficient lst1 lst2)
+  (/ (covariance lst1 lst2) (* (standard-deviation lst1) (standard-deviation lst2))))
+    
