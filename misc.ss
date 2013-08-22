@@ -72,6 +72,18 @@
      (map (lambda (element)
             body ...)
           list))))
+
+(define (depth lst)
+  (define (my-depth lst acc)
+    (if (null? lst) acc (my-depth (cdr lst) (+ acc 1))))
+  (my-depth lst 0))
+
+(define (rec-depth lst)
+  (define (my-rec-depth lst acc)
+    (cond [(null? lst) acc]
+          [(list? (car lst)) (my-rec-depth (cdr lst) (+ acc (my-rec-depth (car lst) 0)))]
+          [else (my-rec-depth (cdr lst) (+ acc 1))]))
+  (my-rec-depth lst 0))
   
 ;(call-with-output-file "db" (lambda (out) (write '(1 2 3 4) out)) 'replace)
   
